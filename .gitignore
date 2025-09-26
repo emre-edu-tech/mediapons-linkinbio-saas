@@ -1,0 +1,21 @@
+# === PHP / Composer ===
+vendor/
+composer.lock
+
+# === Environment Variables ===
+.env
+
+# === System / IDE Files ===
+*.log
+*.cache
+*.bak
+*.swp
+# macOS finder metadata
+.DS_Store
+# Windows explorer metadata
+Thumbs.db
+
+# === Node / Frontend ===
+node_modules/
+package-lock.json
+npm-debug.log
