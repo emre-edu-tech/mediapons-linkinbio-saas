@@ -1,0 +1,24 @@
+# Enable URL rewriting
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Ensure the base is the current directory
+    RewriteBase /
+
+    # If the request is an existing file or directory, serve it directly
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Otherwise, send the request to index.php
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Security: prevent direct access to .env and other sensitive files
+<FilesMatch "^(\.env|composer\.(json|lock)|package\.json|vite\.config\.js)$">
+    Require all denied
+</FilesMatch>
+
+# Security: block access to git and node_modules if uploaded by mistake
+RedirectMatch 404 /\.git
+RedirectMatch 404 /node_modules
