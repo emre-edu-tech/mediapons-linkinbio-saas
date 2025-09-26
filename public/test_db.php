@@ -7,8 +7,8 @@ use App\Core\Database;
 $config = require __DIR__ . '/../config/config.php';
 
 // Get DB Instance
-$db1 = Database::getInstance($config);
-$db2 = Database::getInstance($config);
+$db1 = Database::getInstance($config['db']);
+$db2 = Database::getInstance($config['db']);
 
 // should be true
 var_dump($db1 === $db2);
